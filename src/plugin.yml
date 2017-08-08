@@ -5,17 +5,15 @@ author: Ludwig Hornslied
 depend: [Towny, Vault]
 commands:
   cafe:
-    description: 카페 주소를 출력합니다.
   website:
-    description: 웹사이트 주소를 출력합니다.
   hack:
-    description: 핵 신고 절차를 안내합니다.
+  limit:
+  alert:
   evitatowny:
     sidge:
-      description: 공성전을 시작합니다.
-      usage: /evitatowny sidge <공격국가> <방어마을>
-    stopsidge:
-      description: 모든 공성전을 중단합니다.
-  alert:
-    description: 공지사항을 출력합니다.
-    usage: /alert <메시지>
+      stop:
+    warlog:
+      delete:
+  ac:
+    new:
+    show:

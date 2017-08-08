@@ -11,7 +11,6 @@ import com.tistory.hornslied.evitaonline.Resources;
 import net.md_5.bungee.api.ChatColor;
 
 public class InfoCommand implements CommandExecutor {
-	@SuppressWarnings("unused")
 	private final Main plugin;
 	
 	public InfoCommand(Main instance) {
@@ -30,6 +29,7 @@ public class InfoCommand implements CommandExecutor {
 				sender.sendMessage(Resources.tagInfo + ChatColor.YELLOW + "카페 주소: http://cafe.naver.com/evitaonline");
 				return true;
 			case "limit":
+				((Player)sender).openInventory(plugin.infoGUI.getLimitGUI());
 				return true;
 			default:
 				return false;

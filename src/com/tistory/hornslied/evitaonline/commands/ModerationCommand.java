@@ -6,7 +6,10 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
 import com.tistory.hornslied.evitaonline.Main;
+import com.tistory.hornslied.evitaonline.Permissions;
 import com.tistory.hornslied.evitaonline.Resources;
+
+import net.md_5.bungee.api.ChatColor;
 
 public class ModerationCommand implements CommandExecutor {
 	@SuppressWarnings("unused")
@@ -18,15 +21,20 @@ public class ModerationCommand implements CommandExecutor {
 	
 	@Override
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-		if(label.equalsIgnoreCase("alert")) {
-			if(args.length < 1) {
+		switch(label.toLowerCase()) {
+			case "alert":
+				if(sender.hasPermission(Permissions.alert)) {
+					if(args.length < 1) {
+						sender.sendMessage(Resources.tagServer + ChatColor.RED + "명령어 사용 방법: ");
+						return false;
+					} else {
+						Bukkit.broadcastMessage(Resources.tagAlert + args[0]);
+					}
+				} else {
+					sender.sendMessage(Resources.messagePermission);	
+				}
+			default:
 				return false;
-			}
-			
-			Bukkit.broadcastMessage(Resources.tagAlert + args[0]);
-			return true;
-		} else {
-			return false;
 		}
 	}
 }
